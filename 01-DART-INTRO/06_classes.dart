@@ -2,7 +2,7 @@ void main() {
   //     constructor       vvvvv
   //final wolverine = new Hero();
   // new opcional
-  final Hero wolverine = Hero(name:'Logan', power:'Regeneracion');
+  final Hero wolverine = Hero(name: 'Logan', power: 'Regeneracion');
 
   print(wolverine);
   print(wolverine.name);
@@ -21,16 +21,13 @@ class Hero {
   //    power = pPower;
   // vvvvv tmb lo puedo hacer así
   //y le puedo poner required si quiero
-  Hero({required this.name,
-        this.power = 'Sin poder'
-        });
+  Hero({required this.name, this.power = 'Sin poder'});
   //an JS sería así vvvvvvv PERO NO FUNCIONA
   /*{
     name = pName;
     power = pPower;
   }*/
-  
-  
+
   //sobreescribo el comportamiento nativo de toString()
   @override
   String toString() {
