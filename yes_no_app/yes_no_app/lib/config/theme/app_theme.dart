@@ -15,7 +15,7 @@ class AppTheme {
   final int selectedColor;
 //constructor
   AppTheme({this.selectedColor = 0,})
-    : assert(selectedColor > 0 && selectedColor < _colorThemes.length - 1,
+    : assert(selectedColor >= 0 && selectedColor < _colorThemes.length - 1,
      'Selected color cannot be smaller than 0');
 
   ThemeData theme() {
