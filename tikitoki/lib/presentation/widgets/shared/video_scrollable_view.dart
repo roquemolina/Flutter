@@ -4,13 +4,9 @@ import 'package:tikitoki/presentation/widgets/shared/video_buttons.dart';
 import '../../../domain/entities/videos_post.dart';
 
 class VideoScrollableView extends StatelessWidget {
-
   final List<VideoPost> videos;
 
-  const VideoScrollableView({
-    super.key,
-    required this.videos
-    });
+  const VideoScrollableView({super.key, required this.videos});
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +21,14 @@ class VideoScrollableView extends StatelessWidget {
             //VideoPlayer + Gradient
 
             //Buttons
-            VideoButtons(video:videoPost),
-
+            Positioned(
+              bottom: 40,
+              right: 20,
+              child: VideoButtons(video: videoPost),
+            ),
           ],
-        )
-
-
+        );
       }),
-      
     );
   }
 }
