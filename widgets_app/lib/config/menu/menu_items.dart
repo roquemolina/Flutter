@@ -16,15 +16,15 @@ class MenuItem {
 
 const appMenuItems = <MenuItem>[
   MenuItem(
-    title:'Botontes',
+    title:'Buttons',
     subTitle: 'Varios botones en Flutter',
     link: '/buttons',
     icon: Icons.smart_button_outlined,
   ),
   MenuItem(
-    title:'Targetas',
+    title:'Cards',
     subTitle: 'Un contenedor estilizado',
-    link: '/buttons',
+    link: '/cards',
     icon: Icons.credit_card,
   ),
 ];

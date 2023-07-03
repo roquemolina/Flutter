@@ -30,7 +30,7 @@ class AppTheme {
       useMaterial3: true,
       colorSchemeSeed: colorList[selectedColor],
       brightness: Brightness.light,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         centerTitle: true,
       )
     );
