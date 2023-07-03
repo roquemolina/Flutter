@@ -9,7 +9,7 @@ class MessageFieldBox extends StatelessWidget {
     final textController = TextEditingController();
     final focusNode = FocusNode();
 
-    final colors = Theme.of(context).colorScheme;
+    //final colors = Theme.of(context).colorScheme;
 
     final outlineInputBorder = UnderlineInputBorder(
       borderSide: const BorderSide(color: Colors.transparent),
