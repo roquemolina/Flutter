@@ -11,6 +11,7 @@ const cards = <Map<String, dynamic>>[
 
 class CardsScreen extends StatelessWidget {
   const CardsScreen({super.key});
+  static const name = 'cards';
 
   @override
   Widget build(BuildContext context) {

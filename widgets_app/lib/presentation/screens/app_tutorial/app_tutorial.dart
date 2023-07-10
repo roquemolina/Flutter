@@ -27,6 +27,7 @@ final slides = <SlideInfo>[
 
 class AppTutorialScreen extends StatefulWidget {
   const AppTutorialScreen({super.key});
+  static const name = 'tutorial';
 
   @override
   State<AppTutorialScreen> createState() => _AppTutorialScreenState();

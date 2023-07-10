@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({super.key});
+  static const name = 'buttons';
 
   @override
   Widget build(BuildContext context) {
