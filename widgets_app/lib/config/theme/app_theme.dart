@@ -21,20 +21,22 @@ class AppTheme {
   AppTheme({
     this.selectedColor = 0,
     this.isDarkMode = false,
-    })
-    : assert(selectedColor >= 0,
-     'Selected color must be greater than 0'),
-      assert(selectedColor < colorList.length,
-     'Selected color must be smaller than available color list');
+  })  : assert(selectedColor >= 0, 'Selected color must be greater than 0'),
+        assert(selectedColor < colorList.length,
+            'Selected color must be smaller than available color list');
 
   ThemeData getTheme() {
     return ThemeData(
-      useMaterial3: true,
-      brightness: isDarkMode ? Brightness.dark : Brightness.light,
-      colorSchemeSeed: colorList[selectedColor],
-      appBarTheme: const AppBarTheme(
-        centerTitle: true,
-      )
-    );
+        useMaterial3: true,
+        brightness: isDarkMode ? Brightness.dark : Brightness.light,
+        colorSchemeSeed: colorList[selectedColor],
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        ));
   }
+
+  AppTheme copyWith({int? selectedColor, bool? isDarkMode}) => AppTheme(
+        selectedColor: selectedColor ?? this.selectedColor,
+        isDarkMode: isDarkMode ?? this.isDarkMode,
+      );
 }
