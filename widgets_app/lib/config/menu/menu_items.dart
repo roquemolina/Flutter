@@ -68,4 +68,10 @@ const appMenuItems = <MenuItem>[
     link: '/infinite',
     icon: Icons.list_alt_outlined,
   ),
+  MenuItem(
+    title: 'Theme Changer',
+    subTitle: 'On demand theme changer',
+    link: '/theme_changer',
+    icon: Icons.water_drop_outlined,
+  ),
 ];
