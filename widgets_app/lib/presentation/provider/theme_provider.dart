@@ -14,7 +14,7 @@ final selectedIndexColorProvider = StateProvider<int>((ref) => 0);
 final themeNotifierProvider = StateNotifierProvider<ThemeNotifier, AppTheme>(
   (ref) => ThemeNotifier(),
 );
-
+  
 //Controller or Notifier
 class ThemeNotifier extends StateNotifier<AppTheme> {
   //state = new AppTheme();

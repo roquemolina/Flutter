@@ -12,6 +12,11 @@ class InfiniteScrollScreen extends StatefulWidget {
 }
 
 class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
+  List<int> imagesIds = [1, 2, 3, 4, 5];
+  final ScrollController scrollController = ScrollController();
+  bool isLoading = false;
+  bool isMounted = true;
+
   @override
   void initState() {
     super.initState();
@@ -46,11 +51,6 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     final lastId = imagesIds.last;
     imagesIds.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
   }
-
-  List<int> imagesIds = [1, 2, 3, 4, 5];
-  final ScrollController scrollController = ScrollController();
-  bool isLoading = false;
-  bool isMounted = true;
 
   Future<void> onRefresh() async {
     isLoading = true;
