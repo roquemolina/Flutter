@@ -73,7 +73,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
 }
 
 class _Title extends StatelessWidget {
-  const _Title({super.key, this.title, this.subtitle});
+  const _Title({ this.title, this.subtitle});
   final String? title;
   final String? subtitle;
 
@@ -103,14 +103,14 @@ class _Title extends StatelessWidget {
 
 class _Slide extends StatelessWidget {
   final Movie movie;
-  const _Slide({super.key, required this.movie});
+  const _Slide({ required this.movie});
 
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
 
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

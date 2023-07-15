@@ -12,10 +12,10 @@ class MovieScreen extends ConsumerStatefulWidget {
   final String movieId;
 
   @override
-  _MovieScreenState createState() => _MovieScreenState();
+  MovieScreenState createState() => MovieScreenState();
 }
 
-class _MovieScreenState extends ConsumerState<MovieScreen> {
+class MovieScreenState extends ConsumerState<MovieScreen> {
   @override
   void initState() {
     super.initState();
@@ -122,7 +122,6 @@ class _MovieDetail extends StatelessWidget {
 
 class _ActorsByMovie extends ConsumerWidget {
   const _ActorsByMovie({
-    super.key,
     required this.movieId,
   });
   final String movieId;
