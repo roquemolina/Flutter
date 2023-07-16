@@ -73,7 +73,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
 }
 
 class _Title extends StatelessWidget {
-  const _Title({ this.title, this.subtitle});
+  const _Title({this.title, this.subtitle});
   final String? title;
   final String? subtitle;
 
@@ -103,7 +103,7 @@ class _Title extends StatelessWidget {
 
 class _Slide extends StatelessWidget {
   final Movie movie;
-  const _Slide({ required this.movie});
+  const _Slide({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +133,7 @@ class _Slide extends StatelessWidget {
                       );
                     }
                     return GestureDetector(
-                      onTap: () => context.push('/movie/${movie.id}'),
+                      onTap: () => context.push('/home/0/movie/${movie.id}'),
                       child: FadeIn(child: child),
                     );
                   },
