@@ -21,7 +21,9 @@ class MoviesDbDatasource extends MoviesDatasource {
     final movieDBResponse = MovieDbResponse.fromJson(json);
     final List<Movie> movies = movieDBResponse.results
         //no-poster filter O_O
-        .where((moviedb) => moviedb.posterPath != 'https://i0.pickpik.com/photos/286/573/109/error-not-found-404-lego-preview.jpg')
+        .where((moviedb) =>
+            moviedb.posterPath !=
+            'https://i0.pickpik.com/photos/286/573/109/error-not-found-404-lego-preview.jpg')
         .map((moviedb) => MovieMapper.movieDBToEntity(moviedb))
         .toList();
 
@@ -74,6 +76,7 @@ class MoviesDbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> searchMovies(query) async {
+    if (query.isEmpty) return [];
     final response = await dio.get('/search/movie', queryParameters: {
       'query': query,
     });
