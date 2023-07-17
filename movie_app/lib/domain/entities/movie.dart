@@ -1,4 +1,12 @@
+import 'package:isar/isar.dart';
+part 'movie.g.dart';
+
+
+@collection
 class Movie {
+  //Isar Id
+  //Id isarId = Isar.autoIncrement; // you can also use id = null to auto increment
+  Id? isarId;
   final bool adult;
   final String backdropPath;
   final List<String> genreIds;

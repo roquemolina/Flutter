@@ -191,19 +191,45 @@ class _ActorsByMovie extends ConsumerWidget {
   }
 }
 
-class _CustomSliverAppBar extends StatelessWidget {
+//.family allows arguments
+final isFavoriteProvider =
+    FutureProvider.family.autoDispose((ref, int movieId) {
+  final localStorageRepository = ref.watch(localStorageRepositoryProvider);
+  return localStorageRepository.isMovieFavorite(movieId);
+});
+
+class _CustomSliverAppBar extends ConsumerWidget {
   const _CustomSliverAppBar({
     required this.movie,
   });
   final Movie movie;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
     final size = MediaQuery.of(context).size;
     return SliverAppBar(
       backgroundColor: Colors.black,
       expandedHeight: size.height * .70,
       foregroundColor: Colors.white,
+      actions: [
+        IconButton(
+            onPressed: () async {
+              /* await ref
+                  .read(localStorageRepositoryProvider)
+                  .toggleFavorite(movie); */
+              await ref.read(favoriteMoviesProvider.notifier).toggleFavorite(movie);
+              ref.invalidate(isFavoriteProvider(movie.id));
+            },
+            icon: isFavoriteFuture.when(
+                data: (isFavorite) {
+                  return isFavorite
+                      ? const Icon(Icons.favorite_rounded, color: Colors.red)
+                      : const Icon(Icons.favorite_border);
+                },
+                error: (_, __) => throw UnimplementedError(),
+                loading: () => const CircularProgressIndicator())),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         title: Text(
@@ -230,30 +256,52 @@ class _CustomSliverAppBar extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.transparent, Colors.black54],
-                    begin: Alignment.center,
-                    end: Alignment.bottomCenter,
-                    stops: [0.7, 1],
-                  ),
-                ),
-              ),
+            const _CustomGradient(
+                colors: [Colors.transparent, Colors.black54],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.7, 1]),
+            const _CustomGradient(
+              colors: [Colors.black54, Colors.transparent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [0.0, 0.2],
             ),
-            const SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.black54, Colors.transparent],
-                    begin: Alignment.topLeft,
-                    stops: [0.0, 0.3],
-                  ),
-                ),
-              ),
+            const _CustomGradient(
+              colors: [Colors.black54, Colors.transparent],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [0.0, 0.2],
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CustomGradient extends StatelessWidget {
+  const _CustomGradient(
+      {required this.colors,
+      required this.begin,
+      required this.end,
+      required this.stops});
+  final List<Color> colors;
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
+  final List<double> stops;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: colors,
+            begin: begin,
+            end: end,
+            stops: stops,
+          ),
         ),
       ),
     );
