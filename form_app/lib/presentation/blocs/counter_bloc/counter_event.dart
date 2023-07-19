@@ -11,7 +11,6 @@ class CounterIncreased extends CounterEvent {
   const CounterIncreased(this.value);
   
   @override
-  // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 
 }
@@ -20,7 +19,6 @@ class CounterReset extends CounterEvent {
   const CounterReset();
   
   @override
-  // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 
 }

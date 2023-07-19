@@ -13,9 +13,7 @@ class CubitCounterScreen extends StatelessWidget {
 }
 
 class _CubitCounterView extends StatelessWidget {
-  const _CubitCounterView({
-    super.key,
-  });
+  const _CubitCounterView();
 
   void increaseCounterBy(BuildContext context, [int value = 1]) {
     context.read<CounterCubit>().increaseBy(value);
@@ -45,7 +43,7 @@ class _CubitCounterView extends StatelessWidget {
           //buildWhen: (previous, current) => current.counter!= previous.counter,
 
           builder: (context, state) {
-            print('counter changed');
+            //print('counter changed');
             return Text('Counter value: ${state.counter}');
           },
         ),
