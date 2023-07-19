@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:push_app/presentation/blocs/notifications/notifications_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,12 +10,16 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Permissions state'),
+        title: context.select((NotificationsBloc bloc) => Text(
+              '${bloc.state.status}',
+              style: TextStyle(fontSize: 20),
+            )),
         actions: [
           IconButton(
-            //TODO: request permission
             icon: const Icon(Icons.settings),
-            onPressed: () {},
+            onPressed: () {
+              context.read<NotificationsBloc>().requestPermission();
+            },
           ),
         ],
       ),
@@ -29,7 +35,7 @@ class _HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: 5,
-      itemBuilder:(context, index) {
+      itemBuilder: (context, index) {
         return ListTile(
           title: Text('Hi $index'),
           subtitle: Text('Sub $index'),

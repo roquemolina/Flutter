@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479399907675",
+    "project_id": "flutter-projects-811c2",
+    "storage_bucket": "flutter-projects-811c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479399907675:android:5908d5930700ff981d8a7e",
+        "android_client_info": {
+          "package_name": "com.roquemolina.push_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479399907675-5q5fsavqc9e2soi655qnb6o097hr909q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA--lmB9D-2Oll3OvrbC2ggyRzS48aZweA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479399907675-5q5fsavqc9e2soi655qnb6o097hr909q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
