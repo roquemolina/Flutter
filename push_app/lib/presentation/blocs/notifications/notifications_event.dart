@@ -13,8 +13,8 @@ class NotificationStatusChanged extends NotificationsEvent {
 }
 
 class NotificationReceived extends NotificationsEvent {
-  final PushMessage notification;
-  const NotificationReceived(this.notification);
+  final PushMessage pushMessage;
+  const NotificationReceived(this.pushMessage);
 
   @override
   List<Object?> get props => throw UnimplementedError();

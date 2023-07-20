@@ -40,7 +40,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   void _notificationReceivedChanged(
       NotificationReceived event, Emitter<NotificationsState> emit) {
     emit(state
-        .copyWith(notifications: [...state.notifications, event.notification]));
+        .copyWith(notifications: [...state.notifications, event.pushMessage]));
   }
 
   void _notificationsStatusChanged(
@@ -82,7 +82,7 @@ FirebaseMessaging.onMessage.listen((RemoteMessage message) {
 });
 
  */
-  void _handlerRemoteMEssage(RemoteMessage message) {
+  void handlerRemoteMessage(RemoteMessage message) {
     // print('Got a message whilst in the foreground!');
     //print('Message data: ${message.data}');
 
@@ -105,7 +105,7 @@ FirebaseMessaging.onMessage.listen((RemoteMessage message) {
   }
 
   void _onForegroundMessage() {
-    FirebaseMessaging.onMessage.listen(_handlerRemoteMEssage);
+    FirebaseMessaging.onMessage.listen(handlerRemoteMessage);
   }
 
   void requestPermission() async {
@@ -119,5 +119,13 @@ FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       sound: true,
     );
     add(NotificationStatusChanged(settings.authorizationStatus));
+  }
+
+  PushMessage? getMessageById(String pushMessageId) {
+    final exist = state.notifications
+        .any((element) => element.messageId == pushMessageId);
+    if (!exist) return null;
+    return state.notifications
+        .firstWhere((element) => element.messageId == pushMessageId);
   }
 }
