@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: context.select((NotificationsBloc bloc) => Text(
               '${bloc.state.status}',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             )),
         actions: [
           IconButton(
@@ -29,16 +29,23 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _HomeView extends StatelessWidget {
-  const _HomeView({super.key});
+  const _HomeView();
 
   @override
   Widget build(BuildContext context) {
+
+    final notifications = context.watch<NotificationsBloc>().state.notifications;
+
     return ListView.builder(
-      itemCount: 5,
+      itemCount: notifications.length,
       itemBuilder: (context, index) {
+        final notification = notifications[index];
         return ListTile(
-          title: Text('Hi $index'),
-          subtitle: Text('Sub $index'),
+          title: Text(notification.title),
+          subtitle: Text(notification.body),
+          leading: notification.imageUrl != null
+          ? Image.network(notification.imageUrl!)
+          : null
         );
       },
     );

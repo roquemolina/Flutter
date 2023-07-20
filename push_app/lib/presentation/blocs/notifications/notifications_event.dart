@@ -6,10 +6,16 @@ abstract class NotificationsEvent extends Equatable {
 
 class NotificationStatusChanged extends NotificationsEvent {
   final AuthorizationStatus status;
-
-  NotificationStatusChanged(this.status);
+  const NotificationStatusChanged(this.status);
 
   @override
-  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
+}
+
+class NotificationReceived extends NotificationsEvent {
+  final PushMessage notification;
+  const NotificationReceived(this.notification);
+
+  @override
   List<Object?> get props => throw UnimplementedError();
 }
