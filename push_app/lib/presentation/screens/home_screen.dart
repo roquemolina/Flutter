@@ -34,8 +34,10 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final notifications =
+        context.watch<NotificationsBloc>().state.notifications;
 
-    final notifications = context.watch<NotificationsBloc>().state.notifications;
+    if (notifications.isEmpty) return Center(child: Text('No notifications'));
 
     return ListView.builder(
       itemCount: notifications.length,
@@ -45,11 +47,11 @@ class _HomeView extends StatelessWidget {
           title: Text(notification.title),
           subtitle: Text(notification.body),
           leading: notification.imageUrl != null
-          ? Image.network(notification.imageUrl!)
-          : null,
+              ? Image.network(notification.imageUrl!)
+              : null,
           onTap: () {
             context.push('/push-details/${notification.messageId}');
-            },
+          },
         );
       },
     );
