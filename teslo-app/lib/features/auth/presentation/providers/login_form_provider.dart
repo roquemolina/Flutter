@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 import 'package:teslo_shop/features/auth/presentation/providers/auth_provider.dart';
-import 'package:teslo_shop/features/shared/infrastructure/inputs/inputs.dart';
+import 'package:teslo_shop/features/shared/shared.dart';
 
 //! 3 - StateNotifierProvider - consume afuera
 final loginFormProvider = StateNotifierProvider.autoDispose<LoginFormNotifier,LoginFormState>((ref) {

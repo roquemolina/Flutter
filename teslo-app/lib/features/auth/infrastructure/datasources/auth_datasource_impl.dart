@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/auth/domain/datasources/auth_datasource.dart';
-import 'package:teslo_shop/features/auth/domain/entities/user_entity.dart';
-import 'package:teslo_shop/features/auth/infrastructure/error/auth_errors.dart';
-import 'package:teslo_shop/features/auth/infrastructure/mappers/user_mapper.dart';
+import 'package:teslo_shop/features/auth/domain/domain.dart';
+import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
 
 class AuthDataSourceImpl extends AuthDataSource {
 

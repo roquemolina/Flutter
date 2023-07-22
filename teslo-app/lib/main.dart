@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:teslo_shop/config/config.dart';
 
-Future main() async {
-  Environment.initEnvironment();
-  runApp(const ProviderScope(child: MainApp()));
+
+void main() async {
+  
+  await Environment.initEnvironment();
+
+  runApp(
+    const ProviderScope(child: MainApp())
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -12,6 +17,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp.router(
       routerConfig: appRouter,
       theme: AppTheme().getTheme(),

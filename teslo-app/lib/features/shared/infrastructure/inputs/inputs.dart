@@ -1,2 +1,3 @@
-export 'package:teslo_shop/features/shared/infrastructure/inputs/email.dart';
-export 'package:teslo_shop/features/shared/infrastructure/inputs/password.dart';
+
+export 'email.dart';
+export 'password.dart';
