@@ -5,11 +5,12 @@ import 'package:teslo_shop/features/auth/domain/entities/user_entity.dart';
 import 'package:teslo_shop/features/auth/infrastructure/error/auth_errors.dart';
 import 'package:teslo_shop/features/auth/infrastructure/mappers/user_mapper.dart';
 
-class AuthDatasourceImpl extends AuthDatasource {
+class AuthDataSourceImpl extends AuthDataSource {
+
   final dio = Dio(
     BaseOptions(
       baseUrl: Environment.apiUrl,
-    ),
+    )
   );
 
   @override
@@ -20,16 +21,29 @@ class AuthDatasourceImpl extends AuthDatasource {
 
   @override
   Future<User> login(String email, String password) async {
+    
     try {
-      final response = await dio.post('auth/login', data: {
+      final response = await dio.post('/auth/login', data: {
         'email': email,
-        'password': password,
+        'password': password
       });
+
       final user = UserMapper.userJsonToEntity(response.data);
       return user;
+      
+    } on DioError catch (e) {
+      if( e.response?.statusCode == 401 ){
+         throw CustomError(e.response?.data['message'] ?? 'Credenciales incorrectas' );
+      }
+      if ( e.type == DioErrorType.connectionTimeout ){
+        throw CustomError('Revisar conexión a internet');
+      }
+      throw Exception();
     } catch (e) {
-      throw WrongCredentials();
+      throw Exception();
     }
+
+
   }
 
   @override
@@ -37,4 +51,5 @@ class AuthDatasourceImpl extends AuthDatasource {
     // TODO: implement register
     throw UnimplementedError();
   }
+  
 }
